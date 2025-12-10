@@ -7,7 +7,7 @@ import './recipe.css';
  * RecipeCard shows a compact card with title, image and favorite action.
  */
 export default function RecipeCard({ recipe }) {
-  const { id, title, image, summary } = recipe || {};
+  const { id, title, image, summary, isFavorite } = recipe || {};
   return (
     <div className="recipe-card card">
       <div className="recipe-card__media">
@@ -19,7 +19,7 @@ export default function RecipeCard({ recipe }) {
           />
         </Link>
         <div className="recipe-card__fav">
-          <FavoriteButton recipeId={id} />
+          <FavoriteButton recipeId={id} initial={Boolean(isFavorite)} />
         </div>
       </div>
       <div className="recipe-card__body">

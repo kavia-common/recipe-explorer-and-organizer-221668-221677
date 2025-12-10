@@ -67,9 +67,14 @@ export default function Browse() {
       try {
         const data = await listRecipes(params, { signal: controller.signal });
         // Assume backend returns { items, total, page, pageSize } or array fallback
-        const list = Array.isArray(data) ? data : data?.items || [];
+        const listRaw = Array.isArray(data) ? data : data?.items || [];
         const total = data?.total ?? undefined;
 
+        // Normalize potential favorite flag if backend provides it
+        const list = listRaw.map((r) => ({
+          ...r,
+          isFavorite: Boolean(r?.isFavorite),
+        }));
         setItems((prev) => (append ? [...prev, ...list] : list));
         setHasMore(
           typeof total === 'number'
