@@ -84,23 +84,27 @@ export async function removeFavorite(recipeId) {
   return data;
 }
 
+/**
+ * Notes endpoints
+ */
+
 // PUBLIC_INTERFACE
 export async function listNotes(recipeId) {
-  /** List notes for a specific recipe. */
+  /** List notes for a specific recipe. GET /recipes/:id/notes */
   const { data } = await api.get(`/recipes/${encodeURIComponent(recipeId)}/notes`);
   return data;
 }
 
 // PUBLIC_INTERFACE
 export async function createNote(recipeId, payload) {
-  /** Create a note for the recipe. Payload: { content: string, ... } */
+  /** Create a note for the recipe. POST /recipes/:id/notes Payload: { content: string } */
   const { data } = await api.post(`/recipes/${encodeURIComponent(recipeId)}/notes`, payload);
   return data;
 }
 
 // PUBLIC_INTERFACE
 export async function updateNote(recipeId, noteId, payload) {
-  /** Update a note for the recipe. */
+  /** Update a note for the recipe. PUT /recipes/:id/notes/:noteId Payload: { content: string } */
   const { data } = await api.put(
     `/recipes/${encodeURIComponent(recipeId)}/notes/${encodeURIComponent(noteId)}`,
     payload
@@ -110,7 +114,7 @@ export async function updateNote(recipeId, noteId, payload) {
 
 // PUBLIC_INTERFACE
 export async function deleteNote(recipeId, noteId) {
-  /** Delete a note for the recipe. */
+  /** Delete a note for the recipe. DELETE /recipes/:id/notes/:noteId */
   const { data } = await api.delete(
     `/recipes/${encodeURIComponent(recipeId)}/notes/${encodeURIComponent(noteId)}`
   );
