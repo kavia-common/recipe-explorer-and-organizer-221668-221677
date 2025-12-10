@@ -1,0 +1,123 @@
+.navbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-5);
+  background: var(--color-surface);
+  border-bottom: 1px solid rgba(17,24,39,0.06);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav__brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text);
+}
+
+.brand__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-success));
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+
+.brand__title {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.navbar__links {
+  display: inline-flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.nav__link {
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.nav__link:hover {
+  background: rgba(59,130,246,0.08);
+  text-decoration: none;
+}
+
+.btn-link {
+  color: var(--color-primary);
+}
+
+/* Body layout */
+.layout__body {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--spacing-6);
+  padding: var(--spacing-6);
+}
+
+.sidebar {
+  background: var(--color-surface);
+  border: 1px solid rgba(17,24,39,0.06);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-5);
+  box-shadow: var(--shadow-sm);
+  align-self: start;
+  position: sticky;
+  top: 80px;
+  height: fit-content;
+}
+
+.sidebar__title {
+  margin: 0 0 var(--spacing-3);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary);
+}
+
+.sidebar__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__list li a {
+  display: block;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+}
+
+.sidebar__list li a:hover {
+  background: rgba(100,116,139,0.08);
+  text-decoration: none;
+}
+
+.layout__content {
+  min-height: 60vh;
+}
+
+@media (max-width: 960px) {
+  .layout__body {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    position: static;
+  }
+}

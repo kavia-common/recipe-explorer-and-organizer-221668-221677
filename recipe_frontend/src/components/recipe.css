@@ -1,0 +1,129 @@
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--spacing-5);
+}
+
+.recipe-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.recipe-card__media {
+  position: relative;
+}
+
+.recipe-card__img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-card__fav {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+.fav-btn {
+  border: 1px solid rgba(17,24,39,0.12);
+  background: #fff;
+  border-radius: 9999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.fav-btn.is-active {
+  color: #f59e0b;
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.recipe-card__body {
+  padding: var(--spacing-4) var(--spacing-5);
+}
+
+.recipe-card__title {
+  margin: 0 0 6px;
+}
+
+.recipe-card__summary {
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: 14px;
+}
+
+.recipe-filters .filters-row {
+  display: grid;
+  gap: var(--spacing-4);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.filters-item {
+  display: grid;
+  gap: 6px;
+}
+
+.filters-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-secondary);
+}
+
+.filters-item input,
+.filters-item select {
+  border: 1px solid rgba(17,24,39,0.12);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+}
+
+/* Notes Drawer */
+.drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 30;
+}
+
+.notes-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  height: 100%;
+  width: 400px;
+  background: var(--color-surface);
+  border-left: 1px solid rgba(17,24,39,0.06);
+  box-shadow: var(--shadow-lg);
+  transition: right 0.25s ease;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes-drawer.open {
+  right: 0;
+}
+
+.notes-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-4) var(--spacing-5);
+  border-bottom: 1px solid rgba(17,24,39,0.06);
+}
+
+.notes-drawer__content {
+  padding: var(--spacing-5);
+  overflow: auto;
+  flex: 1;
+}
+
+.drawer-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
