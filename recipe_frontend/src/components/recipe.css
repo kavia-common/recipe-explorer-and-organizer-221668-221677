@@ -61,6 +61,45 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+/* Chips input helpers (used by Search page) */
+.chips-input {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 1px solid rgba(17,24,39,0.12);
+  border-radius: var(--radius-sm);
+  padding: 6px;
+  min-height: 42px;
+  align-items: center;
+  background: #fff;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  border: 1px solid #93c5fd;
+  color: #111827;
+  font-size: 13px;
+}
+.chip button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  line-height: 1;
+}
+.chips-input input {
+  flex: 1;
+  min-width: 140px;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  font: inherit;
+  background: transparent;
+}
+
 .filters-item {
   display: grid;
   gap: 6px;
