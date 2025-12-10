@@ -112,11 +112,11 @@ export default function NotesDrawer({
         className={`notes-drawer ${open ? 'open' : ''}`}
         role="dialog"
         aria-modal="true"
-        aria-label="Notes Drawer"
+        aria-labelledby="notes-drawer-title"
         tabIndex={-1}
       >
         <div className="notes-drawer__header">
-          <h3 style={{ margin: 0 }}>{title}</h3>
+          <h3 id="notes-drawer-title" style={{ margin: 0 }}>{title}</h3>
           <button
             className="drawer-close"
             onClick={onClose}

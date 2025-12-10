@@ -48,6 +48,7 @@ export default function FavoriteButton({ recipeId, initial = false, onChange }) 
 
   return (
     <button
+      type="button"
       className={`fav-btn ${active ? 'is-active' : ''}`}
       aria-pressed={active}
       aria-label={active ? 'Remove from favorites' : 'Add to favorites'}

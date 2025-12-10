@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import RecipeFilters from '../components/RecipeFilters';
 import RecipeGrid from '../components/RecipeGrid';
+import Loading from '../components/Loading';
+import EmptyState from '../components/EmptyState';
 import { listRecipes } from '../api/recipes';
 import { useInfiniteScroll } from '../hooks';
 import { useUI } from '../contexts/UIContext';
@@ -162,16 +164,21 @@ export default function Browse() {
       <RecipeFilters value={filters} onChange={onFiltersChange} />
       <div style={{ height: 12 }} />
       {initialLoading ? (
-        <div className="card">Loading recipes...</div>
+        <Loading label="Loading recipes..." />
       ) : isEmpty ? (
-        <div className="card">No recipes found.</div>
+        <EmptyState title="No recipes found" description="Try adjusting filters or search terms." />
       ) : (
         <>
           <RecipeGrid recipes={items} />
-          <div ref={sentinelRef} style={{ height: 1 }} />
+          <div
+            ref={sentinelRef}
+            style={{ height: 1 }}
+            role="presentation"
+            aria-hidden="true"
+          />
           <div style={{ height: 12 }} />
-          {loadingMore && <div className="card">Loading more...</div>}
-          {!hasMore && <div className="card">You have reached the end.</div>}
+          {loadingMore && <Loading label="Loading more..." variant="card" />}
+          {!hasMore && <EmptyState title="End of results" description="You have reached the end." />}
         </>
       )}
     </>

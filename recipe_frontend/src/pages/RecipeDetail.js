@@ -255,7 +255,7 @@ export default function RecipeDetail() {
         openerRef={openNotesBtnRef}
         title="Recipe Notes"
       >
-        <div id="recipe-notes-drawer">
+        <div id="recipe-notes-drawer" role="region" aria-label="Recipe notes content">
           <div style={{ display: 'grid', gap: 8, marginBottom: 16 }}>
             <label style={{ display: 'grid', gap: 6 }}>
               <span

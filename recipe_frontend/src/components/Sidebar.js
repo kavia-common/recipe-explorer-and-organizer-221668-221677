@@ -77,6 +77,7 @@ export default function Sidebar() {
               <Link
                 to="/browse"
                 className={!activeCategory ? 'is-active' : undefined}
+                aria-current={!activeCategory ? 'page' : undefined}
                 onClick={(e) => {
                   e.preventDefault();
                   onSelect('');
@@ -90,6 +91,7 @@ export default function Sidebar() {
                 <Link
                   to={`/browse?category=${encodeURIComponent(c)}`}
                   className={activeCategory === c ? 'is-active' : undefined}
+                  aria-current={activeCategory === c ? 'page' : undefined}
                   onClick={(e) => {
                     e.preventDefault();
                     onSelect(c);

@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDebounce, useInfiniteScroll } from '../hooks';
 import RecipeGrid from '../components/RecipeGrid';
+import Loading from '../components/Loading';
+import EmptyState from '../components/EmptyState';
 import { searchRecipes } from '../api/recipes';
 import { useUI } from '../contexts/UIContext';
 
@@ -266,16 +268,21 @@ export default function Search() {
       <div style={{ height: 12 }} />
 
       {initialLoading ? (
-        <div className="card">Searching...</div>
+        <Loading label="Searching..." />
       ) : isEmpty ? (
-        <div className="card">No recipes found. Try different keywords or ingredients.</div>
+        <EmptyState
+          title="No recipes found"
+          description="Try different keywords or ingredients."
+        />
       ) : (
         <>
           <RecipeGrid recipes={items} />
-          <div ref={sentinelRef} style={{ height: 1 }} />
+          <div ref={sentinelRef} style={{ height: 1 }} role="presentation" aria-hidden="true" />
           <div style={{ height: 12 }} />
-          {loadingMore && <div className="card">Loading more...</div>}
-          {!hasMore && items.length > 0 && <div className="card">You have reached the end.</div>}
+          {loadingMore && <Loading label="Loading more..." variant="card" />}
+          {!hasMore && items.length > 0 && (
+            <EmptyState title="End of results" description="You have reached the end." />
+          )}
         </>
       )}
     </>

@@ -48,9 +48,18 @@ function ensureToastContainer() {
 
 function showToast(message, type = 'error', timeout = 3500) {
   try {
+    // Prefer UIContext if present on window (exposed by provider)
+    const uiToast = window.__UI_TOAST__;
+    if (typeof uiToast === 'function') {
+      uiToast(message, { type, timeout });
+      return;
+    }
+    // Fallback: direct DOM toasts
     const root = ensureToastContainer();
     const item = document.createElement('div');
     item.textContent = message;
+    item.setAttribute('role', 'status');
+    item.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
     item.style.padding = '10px 12px';
     item.style.borderRadius = '8px';
     item.style.boxShadow = '0 2px 8px rgba(0,0,0,0.15)';
